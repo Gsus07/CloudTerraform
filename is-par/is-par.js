@@ -15,7 +15,7 @@ function isPar(number){
     
         if (event.queryStringParameters && event.queryStringParameters['number']) {
             const number = parseInt(event.queryStringParameters['number']);
-            const result = isPrime(number);
+            const result = isPar(number);
     
             return {
                 statusCode: 200,
@@ -24,7 +24,7 @@ function isPar(number){
                 },
                 body: JSON.stringify({
                     number,
-                    isPrime: result,
+                    isPar: result,
                 }),
             }
         }
