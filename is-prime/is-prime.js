@@ -16,17 +16,29 @@ function isPrime(number) {
 module.exports.handler = async (event) => {
     console.log('Event: ', event);
 
-    const number = event.queryStringParameters.number;
-    const isPrime = isPrime(number);
+    if (event.queryStringParameters && event.queryStringParameters['number']) {
+        const number = parseInt(event.queryStringParameters['number']);
+        const result = isPrime(number);
+
+        return {
+            statusCode: 200,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                number,
+                isPrime: result,
+            }),
+        }
+    }
 
     return {
-        statusCode: 200,
+        statusCode: 400,
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            number,
-            isPrime,
+            message: 'Missing number parameter',
         }),
-    }
+    }    
 }
