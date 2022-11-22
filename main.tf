@@ -181,7 +181,7 @@ resource "aws_lambda_permission" "api_gw" {
   function_name = aws_lambda_function.is_prime.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn = "${aws_apigatewayv2_api.lambda_api.execution_arn}//"
+  source_arn = "${aws_apigatewayv2_api.lambda_api.execution_arn}/*/*"
 }
 
 resource "aws_lambda_permission" "api_gw_is_par" {
@@ -190,5 +190,5 @@ resource "aws_lambda_permission" "api_gw_is_par" {
   function_name = aws_lambda_function.is_par.function_name
   principal     = "apigateway.amazonaws.com"
 
-  source_arn = "${aws_apigatewayv2_api.lambda_api.execution_arn}//"
+  source_arn = "${aws_apigatewayv2_api.lambda_api.execution_arn}/*/*"
 }

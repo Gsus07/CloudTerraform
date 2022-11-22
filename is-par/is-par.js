@@ -1,11 +1,8 @@
 function isPar(number){
-    var numero = 11;
     
-    if(numero%2==0){
-        alert("El número "+numero+" es par");
+    if(number%2==0){
         return true
     }else{
-        alert("El número "+numero+" es impar");
         return false
     }
 }
